@@ -73,18 +73,18 @@ class App extends Component{
       <React.Fragment>
         {/* <div>count: {this.state.count}</div> */}
         <div>value: {props.value}</div>
-        <button onClick={props.increment}>+1</button>
-        <button onClick={props.decrement}>-1</button>
+        <button onClick={props.Increment}>+1</button>
+        <button onClick={props.Decrement}>-1</button>
       </React.Fragment>
     )
   }
 }
 
-const mapStateToProps = (state) => ({ value: state.count.value })
-const mapDispatchToProps = (dispatch) => ({
+const mapStateToProps = state => ({ value: state.count.value })
+const mapDispatchToProps = dispatch => ({
   // incrementを引数にdispach->reducerを実行
-  increment: () => dispatch(increment()),
-  decrement: () => dispatch(decrement())
+  Increment: () => dispatch(increment()),
+  Decrement: () => dispatch(decrement())
 })
 // const mapDispatchToProps = ({ increment, decrement})
 
