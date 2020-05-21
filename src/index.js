@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore} from 'redux'
 // どこからもアクセスできるようにする
-import { provider } from 'react-redux'
+import { Provider } from 'react-redux'
 
 import './index.css';
 import reducer from './reducers'
