@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//storeの作成に必要
 import { createStore} from 'redux'
 // どこからもアクセスできるようにする
 import { Provider } from 'react-redux'

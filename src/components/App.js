@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 
+// アクションクリエイター
 import { increment, decrement } from '../actions'
 // import PropTypes from 'prop-types'
 // import React,{Component} from 'react';
@@ -79,12 +80,13 @@ class App extends Component{
   }
 }
 
-const mapStateToProps = state => ({ value: state.count.value })
-const mapDispatchToProps = dispatch => ({
+const mapStateToProps = (state) => ({ value: state.count.value })
+const mapDispatchToProps = (dispatch) => ({
+  // incrementを引数にdispach->reducerを実行
   increment: () => dispatch(increment()),
   decrement: () => dispatch(decrement())
 })
-const mapDispatchToProps = ({ increment, decrement})
+// const mapDispatchToProps = ({ increment, decrement})
 
 // 追加
 export default connect(mapStateToProps, mapDispatchToProps)(App)
