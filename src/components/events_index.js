@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // アクションクリエイター
-import { increment, decrement } from '../actions'
+import { readEvents } from '../actions'
 // import PropTypes from 'prop-types'
 // import React,{Component} from 'react';
 
@@ -53,9 +54,23 @@ import { increment, decrement } from '../actions'
 //   age: PropTypes.number.isRequired
 // }
 
-// const App = () => (<Counter></Counter>)
 
-class App extends Component{
+// const App = () => (<Counter></Counter>)
+class EventsIndex extends Component{
+  componentDidMount(){
+    this.props.readEvents()
+
+  }
+
+  renderEvents(){
+    return _.map(this.props.events, event => (
+      <tr key={event.id}>
+        <td>{event.id}</td>
+        <td>{event.title}</td>
+        <td>{event.body}</td>s
+      </tr>
+    ))
+  }
   // reduxでは不要
   // constructor(props){
   //   super(props)
@@ -68,27 +83,37 @@ class App extends Component{
   //   this.setState({count: this.state.count - 1})
   // }
   render(){
-    const props = this.props
+    // const props = this.props
     return(
       <React.Fragment>
         {/* <div>count: {this.state.count}</div> */}
-        <div>value: {props.value}</div>
-        <button onClick={props.Increment}>+1</button>
-        <button onClick={props.Decrement}>-1</button>
+        {/* <div>{console.log(props.events)}</div> */}
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {this.renderEvents()}
+          </tbody>
+        </table>
       </React.Fragment>
     )
   }
 }
 
-const mapStateToProps = state => ({ value: state.count.value })
+const mapStateToProps = state => ({ events: state.events })
 const mapDispatchToProps = dispatch => ({
   // incrementを引数にdispach->reducerを実行
-  Increment: () => dispatch(increment()),
-  Decrement: () => dispatch(decrement())
+  readEvents
 })
 // const mapDispatchToProps = ({ increment, decrement})
 
 // 追加
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex)
 
 // export default App;

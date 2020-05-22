@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //storeの作成に必要
-import { createStore} from 'redux'
-// どこからもアクセスできるようにする
+import { createStore, applyMiddleware} from 'redux'
+// 全コンポーネントからアクセスできるようにする
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 
 import './index.css';
 import reducer from './reducers'
-import App from './components/App';
+import EventsIndex from './components/events_index';
 import * as serviceWorker from './serviceWorker';
 
 // アプリケーション内部のstoreは集約
-const store = createStore(reducer)
+// 第二引数にミドルウェア
+const store = createStore(reducer, applyMiddleware(thunk))
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <EventsIndex />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
