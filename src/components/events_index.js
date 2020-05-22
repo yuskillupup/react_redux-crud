@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-
+import {Link } from 'react-router-dom'
 // アクションクリエイター
 import { readEvents } from '../actions'
+
+
+
 // import PropTypes from 'prop-types'
 // import React,{Component} from 'react';
 
@@ -101,6 +104,9 @@ class EventsIndex extends Component{
             {this.renderEvents()}
           </tbody>
         </table>
+
+        <Link to="/events/new">New Events</Link>
+
       </React.Fragment>
     )
   }
