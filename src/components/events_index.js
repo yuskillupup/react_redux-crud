@@ -67,7 +67,7 @@ class EventsIndex extends Component{
       <tr key={event.id}>
         <td>{event.id}</td>
         <td>{event.title}</td>
-        <td>{event.body}</td>s
+        <td>{event.body}</td>
       </tr>
     ))
   }
@@ -107,7 +107,9 @@ class EventsIndex extends Component{
 }
 
 const mapStateToProps = state => ({ events: state.events })
-const mapDispatchToProps = dispatch => ({
+// dispatch無効！！
+// const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = ({
   // incrementを引数にdispach->reducerを実行
   readEvents
 })
