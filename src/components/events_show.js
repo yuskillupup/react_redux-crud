@@ -56,7 +56,7 @@ class EventsShow extends Component{
             <Field label="Body" name="body" type="text" component={this.renderField} />
           </div>
           <div>
-            <input type="submit" value="Submit" disabled={pristine || submitting || invalid}/>
+            <Button><input type="submit" value="Submit" disabled={pristine || submitting || invalid}/></Button>
             <Link to="/" ><Button variant="contained" color="primary">Cancel</Button></Link>
             <Link to="/" onClick={this.onDeleteClick}><Button variant="contained" color="primary">Delete</Button></Link>
           </div>
