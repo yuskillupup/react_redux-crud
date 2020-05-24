@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form'
 import {Link } from 'react-router-dom'
 
+// react-ui
+import Button from '@material-ui/core/Button';
 
 
 // アクションクリエイター
@@ -43,7 +45,11 @@ class EventsNew extends Component{
           </div>
           <div>
             <input type="submit" value="Submit" disabled={pristine || submitting}/>
-            <Link to="/" >Cancel</Link>
+            <Link to="/" >
+              <Button variant="contained" color="primary">
+                Cancel
+              </Button>
+            </Link>
           </div>
         </form>
       </React.Fragment>

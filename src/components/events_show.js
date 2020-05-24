@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Field, reduxForm} from 'redux-form'
 import {Link } from 'react-router-dom'
 
+// react-ui
+import Button from '@material-ui/core/Button';
 
 // アクションクリエイター
 import { getEvent, deleteEvent, putEvent } from '../actions'
@@ -55,8 +57,8 @@ class EventsShow extends Component{
           </div>
           <div>
             <input type="submit" value="Submit" disabled={pristine || submitting || invalid}/>
-            <Link to="/" >Cancel</Link>
-            <Link to="/" onClick={this.onDeleteClick}>Delete</Link>
+            <Link to="/" ><Button variant="contained" color="primary">Cancel</Button></Link>
+            <Link to="/" onClick={this.onDeleteClick}><Button variant="contained" color="primary">Delete</Button></Link>
           </div>
         </form>
       </React.Fragment>

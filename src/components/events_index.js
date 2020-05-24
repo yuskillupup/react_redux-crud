@@ -6,6 +6,22 @@ import {Link } from 'react-router-dom'
 import { readEvents } from '../actions'
 
 
+import {Fab} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+
+
+// react-ui
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableCell,
+  TableRow,
+  TableRowColumn
+}
+ from '@material-ui/core';
+
+
 
 // import PropTypes from 'prop-types'
 // import React,{Component} from 'react';
@@ -67,15 +83,15 @@ class EventsIndex extends Component{
 
   renderEvents(){
     return _.map(this.props.events, event => (
-      <tr key={event.id}>
-        <td>{event.id}</td>
-        <td>
+      <TableRow key={event.id}>
+        <TableCell align="right">{event.id}</TableCell>
+        <TableCell align="right">
           <Link to={`/events/${event.id}`}>
           {event.title}
           </Link>
-        </td>
-        <td>{event.body}</td>
-      </tr>
+        </TableCell>
+        <TableCell align="right">{event.body}</TableCell>
+      </TableRow>
     ))
   }
   // reduxでは不要
@@ -91,25 +107,33 @@ class EventsIndex extends Component{
   // }
   render(){
     // const props = this.props
+    const style ={
+      position: "fixed",
+      right: 12,
+      bottom: 12,
+    }
     return(
       <React.Fragment>
+        <Link to="/events/new">
+          <Fab color="primary" aria-label="add" style={style} containerElement={<Link to="/events/new"/>}>
+            <AddIcon />
+          </Fab>
+        </Link>
         {/* <div>count: {this.state.count}</div> */}
         {/* <div>{console.log(props.events)}</div> */}
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Body</th>
-            </tr>
-          </thead>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="right">ID</TableCell>
+              <TableCell align="right">Title</TableCell>
+              <TableCell align="right">Body</TableCell>
+            </TableRow>
+          </TableHead>
 
-          <tbody>
-            {this.renderEvents()}
-          </tbody>
-        </table>
-
-        <Link to="/events/new">New Events</Link>
+          <TableBody>
+              {this.renderEvents()}
+          </TableBody>
+        </Table>
 
       </React.Fragment>
     )
